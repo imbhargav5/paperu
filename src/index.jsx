@@ -1,8 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Stage, Layer, Line } from 'react-konva';
-import { useKey, useWindowSize } from 'rooks';
-import { useHistoryTravel } from 'ahooks';
+import { useKey, useWindowSize, useTimeTravelState } from 'rooks';
 
 const BRUSH_STROKE_COLORS = [
   '#F62F63',
@@ -45,50 +44,25 @@ const Brushes = ({ setBrushStrokeColor, disabled }) => {
 const App = () => {
   const { innerHeight, innerWidth } = useWindowSize();
   const [tool, setTool] = useState('pen');
-  const {
-    value: lines,
-    setValue: setLines,
-    back: undo,
-    forward: redo,
-    backLength,
-    forwardLength,
-  } = useHistoryTravel([]);
-  const canUndo = backLength > 0;
-  const canRedo = forwardLength > 0;
+  const [lines, setLines, { undo, redo }] = useTimeTravelState([]);
   const [brushStrokeColor, setBrushStrokeColor] = useState(
     BRUSH_STROKE_COLORS[0]
   );
   const isDrawing = useRef(false);
 
-  useKey(
-    'KeyZ',
-    (keyboardEvent) => {
-      console.log(
-        'key z pressed',
-        keyboardEvent.metaKey,
-        keyboardEvent.shiftKey,
-        keyboardEvent.ctrlKey
-      );
-      if (keyboardEvent.metaKey) {
-        undo();
-      }
-    },
-    {
-      when: canUndo,
+  useKey('KeyZ', (keyboardEvent) => {
+    keyboardEvent.preventDefault();
+    if (keyboardEvent.metaKey) {
+      undo();
     }
-  );
+  });
 
-  useKey(
-    'KeyY',
-    (keyboardEvent) => {
-      if (keyboardEvent.metaKey) {
-        redo();
-      }
-    },
-    {
-      when: canRedo,
+  useKey('KeyY', (keyboardEvent) => {
+    keyboardEvent.preventDefault();
+    if (keyboardEvent.metaKey) {
+      redo();
     }
-  );
+  });
 
   const handleMouseDown = (e) => {
     isDrawing.current = true;
@@ -118,7 +92,9 @@ const App = () => {
 
     // replace last
     lines.splice(lines.length - 1, 1, lastLine);
-    setLines(lines.slice());
+    setLines(lines.slice(), {
+      overwriteLastEntry: true,
+    });
   };
 
   useEffect(() => {

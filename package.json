@@ -18,14 +18,10 @@
     "process": "^0.11.10"
   },
   "dependencies": {
-    "ahooks": "^3.7.0",
-    "fabric": "^5.2.4",
     "konva": "^8.3.12",
-    "next": "^12.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-konva": "^18.2.1",
-    "react-no-ssr": "^1.1.0",
-    "rooks": "^7.0.0"
+    "rooks": "^7.1.0"
   }
 }
