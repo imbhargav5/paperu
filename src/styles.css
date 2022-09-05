@@ -1,0 +1,129 @@
+:root {
+  --color-primary: #f62f63;
+  --color-accent: #ac58f5;
+  --color-background: #171435;
+  --color-text: #fff;
+  --brush-size: 64px;
+  --color-controls-width: 120px;
+  --paperu-controls-width: 160px;
+  --color-gray: #f2f2f2;
+  --control-size: 48px;
+}
+
+button {
+  background-color: transparent;
+}
+
+body.eraser {
+  cursor: grab;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#paperu-controls {
+  position: absolute;
+  left: 220px;
+  top: 48px;
+}
+
+#paperu-controls button {
+  height: var(--control-size);
+  width: var(--control-size);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: 8px;
+  margin-right: 8px;
+  border-radius: 6px;
+  font-size: 32px;
+}
+
+#paperu-controls .pen,
+#paperu-controls .eraser {
+  background-color: var(--color-gray);
+  opacity: 0.25;
+}
+
+#paperu-controls .clear {
+  transform: scale(1.5);
+  margin-left: 24px;
+}
+
+#paperu-controls .pen:hover,
+#paperu-controls .eraser:hover {
+  opacity: 1;
+}
+
+#color-controls {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  width: var(--color-controls-width);
+  width: var(--color-controls-width);
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#color-controls button {
+  height: var(--brush-size);
+  width: var(--brush-size);
+  border-radius: 50%;
+  background-color: var(--color-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#color-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#paperu-controls button[data-active='true'] {
+  opacity: 1;
+}
+
+#color-controls > * + * {
+  margin-top: 16px;
+}
+
+#color-controls .pen,
+#color-controls .eraser,
+#color-controls .clear {
+  background-color: var(--color-primary);
+}

@@ -1,0 +1,4 @@
+node_modules
+.next
+.parcel-cache
+dist

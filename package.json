@@ -1,0 +1,31 @@
+{
+  "name": "paperu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "source": "src/index.html",
+  "repository": "https://github.com/imbhargav5/paperu.git",
+  "author": "Bhargav Ponnapalli <imbhargav5@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build src/index.html --out-dir dist"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "eslint": "^8.23.0",
+    "parcel": "^2.7.0",
+    "prettier": "^2.7.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "ahooks": "^3.7.0",
+    "fabric": "^5.2.4",
+    "konva": "^8.3.12",
+    "next": "^12.2.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-konva": "^18.2.1",
+    "react-no-ssr": "^1.1.0",
+    "rooks": "^7.0.0"
+  }
+}
