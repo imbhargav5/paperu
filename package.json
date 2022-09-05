@@ -10,17 +10,17 @@
     "build": "parcel build src/index.html"
   },
   "devDependencies": {
-    "buffer": "^6.0.3",
-    "eslint": "^8.23.0",
-    "parcel": "^2.7.0",
-    "prettier": "^2.7.1",
-    "process": "^0.11.10"
+    "buffer": "6.0.3",
+    "eslint": "8.23.0",
+    "parcel": "2.7.0",
+    "prettier": "2.7.1",
+    "process": "0.11.10"
   },
   "dependencies": {
-    "konva": "^8.3.12",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-konva": "^18.2.1",
+    "konva": "8.3.12",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-konva": "18.2.1",
     "rooks": "7.1.1"
   }
 }
